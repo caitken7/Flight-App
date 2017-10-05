@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<title>Flight App</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="">
+	<link href="https://fonts.googleapis.com/css?family=Germania+One" rel="stylesheet">
+	<script src="">
+		
+	</script>
+	
+<!--Style and Font-------------------------------------------->
+	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+	<link rel="stylesheet" href="assets/css/style.css">
+<!------------------------------------------------------------>
+	
+	</head>
+	<body>
+<div class="container">
+<div class="jumbotron">
+      <h1 class= "text-center"><strong> Time To Fly </strong> </h1>
+      <h2 class= "text-center"> Calculate the time from your door to your seat.</h2>
+    </div>
+<div class="row">
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 "> <br>
+      <div class="panel-main">
+    <div class="panel-head">
+          <div class="panel-title text-center"><strong> Trip Calculator</strong><br>
+        <br>
+      </div>
+          <div class= "panel-body text-center">
+        <div class= "form"> Enter your starting address<br>
+              <input type="text" id="search-term">
+              <br>
+              <br>
+              <br>
+              Enter your:
+              <input class="airport-button" type="radio" name="airport" >
+              <label> Airport</label>
+              <input class="flightNum-button" type="radio" name="flightNum"
+									
+              <label>Flight Number</label>
+              <br>
+              <input type="text" id="search-term">
+              <br>
+              <br>
+              <br>
+              TSA Pre-Check?:
+              <input class="tsaYes" type="radio" name="tsaYes" value="Yes" checked>
+              <label> Yes </label>
+              <input class="tsaNo" type="radio" name="tsaNo" value="No">
+              <label> No </label>
+              <br>
+              <br>
+              <button type="submit" class="btn btn-default" id="run-search">Submit</button>
+            </div>
+      </div>
+        </div>
+  </div>
+      <div class="results text-center"> </div>
+    </div>
+<script type="text/javascript" src="assets/javascript/logic.js"></script>
+</body>
+</html>
