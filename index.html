@@ -1,65 +1,68 @@
 <!DOCTYPE html>
 <html>
-	<head>
+<head>
 	<title>Flight App</title>
+	<!--Bootstrap----------------------------------------->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-	<link rel="stylesheet" type="text/css" href="">
-	<link href="https://fonts.googleapis.com/css?family=Germania+One" rel="stylesheet">
-	<script src="">
+	
+	<!--jQuery-------------------------------------------->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
 		
-	</script>
-	
-<!--Style and Font-------------------------------------------->
-	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+	<!--Style and Font------------------------------------>
 	<link rel="stylesheet" href="assets/css/style.css">
-  <script src="https://www.gstatic.com/firebasejs/4.5.0/firebase.js"></script>
-<!------------------------------------------------------------>
+	<link href="https://fonts.googleapis.com/css?family=Roboto|Raleway|Lobster|Germania+One" rel="stylesheet">
+	<!---------------------------------------------------->
 	
-	</head>
-	<body>
-<div class="container">
-<div class="jumbotron">
-      <h1 class= "text-center"><strong> Time To Fly </strong> </h1>
-      <h2 class= "text-center"> Calculate the time from your door to your seat.</h2>
-    </div>
-<div class="row">
-<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 "> <br>
-      <div class="panel-main">
-    <div class="panel-head">
-          <div class="panel-title text-center"><strong> Trip Calculator</strong><br>
-        <br>
-      </div>
-          <div class= "panel-body text-center">
-        <div class= "form"> Enter your starting address<br>
-              <input type="text" id="search-term">
-              <br>
-              <br>
-              <br>
-              Enter your:
-              <input class="airport-button" type="radio" name="airport" >
-              <label> Airport</label>
-              <input class="flightNum-button" type="radio" name="flightNum"
-									
-              <label>Flight Number</label>
-              <br>
-              <input type="text" id="search-term">
-              <br>
-              <br>
-              <br>
-              TSA Pre-Check?:
-              <input class="tsaYes" type="radio" name="tsaYes" value="Yes" checked>
-              <label> Yes </label>
-              <input class="tsaNo" type="radio" name="tsaNo" value="No">
-              <label> No </label>
-              <br>
-              <br>
-              <button type="submit" class="btn btn-default" id="run-search">Submit</button>
-            </div>
-      </div>
-        </div>
-  </div>
-      <div class="results text-center"> </div>
-    </div>
-<script type="text/javascript" src="assets/javascript/script.js"></script>
-</body>
-</html>
+</head>
+<body>
+	<div id="wrapper">
+		<div class="jumbotron ">
+			<h1 class= "text-center ">Time To Fly </h1>
+<!--			<img src="assets/images/plane-symbol.png" alt="" id="plane-image">-->
+			<h2 class= "text-center"> Calculate the time from your door to your seat.</h2>
+		</div>
+		<div class="row">
+				<div id="panel-main" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+					<div class="panel-head">
+					</div>
+						<div class="panel-body text-center">
+								<form>
+									<p>Enter your starting address:</p>
+									<input type="text" class="search-term">
+								</form>
+
+								<form>
+									<p>Enter your: </p>
+									<input class="airport-button" type="radio" name="airport" value="airport" checked>
+									<label> Airport </label>
+									<input class="flightNum-button" type="radio" name="airport" value="flightNum">
+									<label> Flight Number </label>
+									<br>
+									<input type="text" class="search-term">
+								</form>
+								
+								<form>
+									<p>TSA Pre-Check?</p>
+									<input class="tsaYes" type="radio" name="tsa" value="Yes" checked>
+									<label> Yes </label>
+									<input class="tsaNo" type="radio" name="tsa" value="No">
+									<label> No </label>
+								</form>
+								
+								<button type="submit" class="btn btn-default" id="run-search">Calculate</button>
+						</div>
+					</div>
+				<div class="results text-center"> </div>
+			</div>
+		
+		<!--Back-Stretch------------------------------------>
+		<script type="text/javascript" src="assets/javascript/javascript.js"></script>
+        <script type="text/javascript">
+        $(document).ready(function() {
+            $.backstretch('assets/images/plane.jpg');
+        });
+        </script>
+        <!-------------------------------------------------->
+        	
+		</body>
+		</html>
