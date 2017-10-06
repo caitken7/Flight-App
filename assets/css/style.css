@@ -6,7 +6,7 @@ html {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  overflow: hidden;
+/*  overflow: scroll;*/
 }
 body {
 	font-family: 'Roboto', sans-serif;
@@ -31,7 +31,9 @@ form {
 	background: linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.2));
 	min-height: 100%;
 	position: absolute;
-    top: 0; right: 0; bottom: 0; left: 0;
+    top: 0; right: 0; left: 0;
+	background-size: cover;
+
 }
 #panel-main, .row {
 	max-width: 800px;
@@ -45,6 +47,7 @@ form {
 	min-width: 100%;
 	border-radius: 10px;
 	margin: 10px auto;
+	color: dimgrey;
 }
 label {
 	margin-right: 15px;
@@ -67,8 +70,6 @@ label {
 .btn {
 	width: 120px;
 	font-size: 18px;
-	
-	
 	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#7892c2', endColorstr='#476e9e',GradientType=0);
 	background-color:#FF512F;
 	-moz-border-radius:10px;
