@@ -47,7 +47,9 @@ form {
 	min-width: 100%;
 	border-radius: 10px;
 	margin: 10px auto;
+	padding: 0 20px;
 	color: dimgrey;
+	text-shadow: none;
 }
 label {
 	margin-right: 15px;
@@ -55,23 +57,20 @@ label {
 .jumbotron, .btn {
 	color: white;
 	background: rgba(0, 0, 0, 0);
-/*
-	background: #FF512F;
-	background: -webkit-linear-gradient(to bottom, #F09819, #FF512F); 
-	background: linear-gradient(to bottom, #F09819, #FF512F);
-*/
-
 	max-width: 800px;
 }
 .jumbotron {
 	border-radius: 15px;
-	margin: 10px auto 30px auto;
+	margin: 10px auto 15px auto;
 }
 .btn {
 	width: 120px;
 	font-size: 18px;
 	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#7892c2', endColorstr='#476e9e',GradientType=0);
 	background-color:#FF512F;
+	background: #FF512F;
+	background: -webkit-linear-gradient(to bottom, #F09819, #FF512F); 
+	background: linear-gradient(to bottom, #F09819, #FF512F);
 	-moz-border-radius:10px;
 	-webkit-border-radius:10px;
 	border-radius:10px;
