@@ -91,14 +91,14 @@ label {
 	color: white;
 	transform: scale(1.1); 
 }
-<<<<<<< HEAD
+
 h1 {
 
 	font-size: 80px;
 }
 
 h2 {font-size:  20px;}
-=======
+
 .btn:active {
 	position:relative;
 	top:1px;
@@ -128,4 +128,3 @@ h2 {font-size:  20px;}
         font-size: 40px;
     }
 }
->>>>>>> 395c7db6a5fa5eef2a8e67c8cc8adb47dd3d4c07
