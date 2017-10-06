@@ -8,4 +8,7 @@
   };
   firebase.initializeApp(config);
 
+ var flightNum = 0;
+ var startingAdd = "";
+
   
