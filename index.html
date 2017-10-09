@@ -1,78 +1,86 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Flight App</title>
-	<!--Bootstrap-->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-	
-	<!--jQuery-->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
-		
-	<!--Style and Font-->
-	<link rel="stylesheet" href="assets/css/style.css">
-	<link href="https://fonts.googleapis.com/css?family=Roboto|Raleway|Lobster|Germania+One" rel="stylesheet">
-	<meta name="viewport" content="width=device-width, initial-scale-1">
-	<!---->
+  <title>Flight App</title>
+  <!--Bootstrap-->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  
+  
+  <!--Style and Font-->
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto|Raleway|Lobster|Germania+One" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale-1">
+  
+  <!--For mobile friendly viewing-->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
 </head>
 <body>
-	<div id="wrapper">
-		<div class="jumbotron ">
-			<h1 class= "text-center ">Time To Fly </h1>
-<!--			<img src="assets/images/plane-symbol.png" alt="" id="plane-image">-->
-			<h2 class= "text-center"> Calculate the time from your door to your seat.</h2>
-		</div>
-		<div class="row">
-				<div id="panel-main" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-					<div class="panel-head">
-					</div>
-						<div class="panel-body text-center">
-								<form>
-									<p>Enter your starting address:</p>
-									<input id="autocomplete" type="text" class="search-term">
-								</form>
+  <div id="wrapper">
+    <div class="jumbotron">
+      <h1 class= "text-center ">Time To Fly </h1>
+      <!--      <img src="assets/images/plane-symbol.png" alt="" id="plane-image">-->
+      <h2 class= "text-center"> Calculate the time from your door to your seat.</h2>
+    </div>
+    
+    
+    <div class="row">
+      <div id="panel-main" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="panel-body text-center">
+          <form>
+            <p>Enter your starting address:</p>
+            <input id="autocomplete" type="text" class="search-term">
+          </form>
 
-								<form>
-									<p>Enter your: </p>
-									<input class="airport-button" type="radio" name="airport" value="airport" checked>
-									<label> Airport </label>
-									<input class="flightNum-button" type="radio" name="airport" value="flightNum">
-									<label> Flight Number </label>
-									<br>
-									<input type="text" class="search-term">
-								</form>
-								
-								<form>
-									<p>TSA Pre-Check?</p>
-									<input class="tsaYes" type="radio" name="tsa" value="Yes" checked>
-									<label> Yes </label>
-									<input class="tsaNo" type="radio" name="tsa" value="No">
-									<label> No </label>
-								</form>
-								
-								<button type="submit" class="btn btn-default" id="run-search">Calculate</button>
-						</div>
-					</div>
-				<div class="results text-center"> </div>
-			</div>
-		
-		<!--Back-Stretch-->
-		<script type="text/javascript" src="assets/javascript/javascript.js"></script>
-
-		<script type="text/javascript" src="assets/javascript/script.js"></script>
-
-		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDJ8bLvg2ZxQyBBFZaVSXZV7g5NJ_r3hGE&libraries=places&callback=initAutocomplete"
-        async defer></script>
-
-        <script type="text/javascript">
-
-
-        $(document).ready(function() {
-            $.backstretch('assets/images/plane.jpg');
-        });
-        </script>
+          <form>
+            <p>Enter your airport: </p>
+            <input type="text" class="search-term">
+          </form>
+          
+          <form>
+            <p>TSA Pre-Check?</p>
+            <input class="tsaYes" type="radio" name="tsa" value="Yes" checked>
+            <label> Yes </label>
+            <input class="tsaNo" type="radio" name="tsa" value="No">
+            <label> No </label>
+          </form>
+          
+          <button type="submit" class="btn btn-default" id="run-search">Calculate</button>
+          
+        </div>
         
-        	
-		</body>
-		</html>
+        <div id="panel-output" class="results text-center"> 
+          <div class="progress">
+            <div class="progress-bar progress-bar-info progress-bar-striped active" role="progressbar" style="width:60%">
+              Travel Time
+            </div>
+            <div class="progress-bar progress-bar-warning progress-bar-striped active" role="progressbar" style="width:40%">
+              TSA Wait
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!--Back-Stretch-->
+  <script type="text/javascript" src="assets/javascript/javascript.js"></script>
+
+  <script type="text/javascript" src="assets/javascript/script.js"></script>
+
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDJ8bLvg2ZxQyBBFZaVSXZV7g5NJ_r3hGE&libraries=places&callback=initAutocomplete"
+  async defer></script>
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $.backstretch('assets/images/plane.jpg');
+    });
+  </script>
+  
+  
+</body>
+
+</html>
 
