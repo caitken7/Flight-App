@@ -1,66 +1,52 @@
 @charset "UTF-8";
 /* CSS Document */
-html {
-  background-image: url("../images/plane.jpg");
-	background-position: right top;
-  background-repeat:no-repeat ;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-	min-height: 110%;
-    top: 0; right: 0; left: 0;
-  overflow: scroll;
-}
+
+
 body {
 	font-family: 'Roboto', sans-serif;
 	letter-spacing: .5px;
 	font-size: 24px;
 	color: white;
 }
+h1, h2, p, label, .progress {
+	text-shadow:2px 2px 3px #283966;
+}
 h1 {
 	font-family: 'Lobster', sans-serif;
-	margin-top: -20px;
+	margin-top: 5px;
 }
 h2 {
 	font-size: 20px;
 	margin-bottom: -10px;
 	font-family: 'Raleway', sans-serif;
 }
-h1, h2, p, label, .progress {
-	text-shadow:2px 2px 3px #283966;
-}
 form {
-	margin-bottom: 30px;
+	margin-bottom: 32px;
 }
-#wrapper {
-/*	background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2));*/
-/*
-	background-image: url("../images/plane.jpg");
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-*/
-	min-height: 110%;
-	position: absolute;
-    top: 0; right: 0; left: 0;
-	background-size: cover;
+label {
+	margin-right: 15px;
+}
 
+
+/*-----------IDs------------*/
+#header {
+	margin-bottom: 60px;
 }
 #panel-main, .row {
 	max-width: 800px;
 	margin: 0 auto;
 }
-#plane-image {
-	max-height: 50px;
-	display: inline-block;
+#panel-body {
+	margin-bottom: 70px;
 }
-/*
-.results {
-	height: 500px;
+#wrapper {
+	min-height: 110%;
+	position: absolute;
+	top: 0; right: 0; left: 0;
+	background-size: cover;
 }
-*/
+
+/*-----------Classes------------*/
 .search-term {
 	min-width: 100%;
 	border-radius: 10px;
@@ -68,26 +54,22 @@ form {
 	padding: 2px 15px;
 	color: dimgrey;
 }
-label {
-	margin-right: 15px;
-}
-.jumbotron, .btn {
+
+/*---------Submit Button---------*/
+.btn {
 	color: white;
 	background: rgba(0, 0, 0, 0);
 	max-width: 800px;
-}
-.jumbotron {
-	border-radius: 15px;
-	margin: 10px auto 15px auto;
+	box-shadow: 1px 1px 4px #283966;
 }
 .btn {
 	width: 120px;
 	font-size: 18px;
 	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#7892c2', endColorstr='#476e9e',GradientType=0);
-	background-color:#efac57;
-	background: #efac57;
-	background: -webkit-linear-gradient(to bottom, #f1b870, #efac57); 
-	background: linear-gradient(to bottom, #f1b870, #efac57);
+	background-color:#D0894B;
+	background: #D0894B;
+	background: -webkit-linear-gradient(to bottom, #f1b870, #D0894B); 
+	background: linear-gradient(to bottom, #f1b870, #D0894B);
 	-moz-border-radius:10px;
 	-webkit-border-radius:10px;
 	border-radius:10px;
@@ -99,30 +81,27 @@ label {
 	text-shadow:1px 1px 4px #283966;
 }
 .btn:hover {
-	background: #efac57;
-	background: -webkit-linear-gradient(to top, #f1b870, #efac57);
-	background: linear-gradient(to top, #f1b870, #efac57);
+	background: #D0894B;
+	background: -webkit-linear-gradient(to top, #f1b870, #D0894B);
+	background: linear-gradient(to top, #f1b870, #D0894B);
 	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#476e9e', endColorstr='#7892c2',GradientType=0);
 	background-color:#476e9e;
 	border:1px solid #4e6096;
 	color: white;
 	transform: scale(1.1); 
 }
-
-h1 {
-
-	font-size: 80px;
-}
-
-h2 {font-size:  20px;}
-
 .btn:active {
 	position:relative;
 	top:1px;
 }
+
+
+/*---------Progress Bar---------*/
 .progress {
 	height: 40px;
-	margin: 10px auto;
+	margin: 150px auto;
+	border-radius: 6px;
+	box-shadow: 1px 1px 4px #283966;
 }
 .progress-bar {
 	padding: 10px;
@@ -130,33 +109,200 @@ h2 {font-size:  20px;}
 }
 
 
+/*---------Loader Icon---------*/
 
-/*---------loader icon---------*/
+/*--- body of the bird*/
+
+.pajaro{
+	background:white;
+	border-radius: 50% 50% 20% 20%;
+	color:black;
+	line-height:20px;
+	letter-spacing: 2px;
+	font-size:0.8em;
+	text-align:center;
+	position:absolute;
+	top:50%; left:50%;
+	margin-top:-20px; margin-left:-10px;
+	width:15px; height:15px;
+	animation:planeo 0.8s linear infinite;
+	z-index:999;
+	display: none;
+}
+
+.pajaro:after,
+.pajaro:before{
+	content:"";
+	position:absolute;
+	top:50%; left:50%;
+}
+
+/*--- bird wings*/
+
+.pajaro:after{
+	border-radius: 100% 100% 0 0;
+	box-shadow: inset 0px 5px 0 white;
+	width:100px; height:100px;
+	margin-top:-7px; margin-left:-50px;
+	transform-origin: 100% 0%;
+	animation:alas 3s linear infinite;
+}
+
+/*--- bird beak*/
+
+.pajaro:before{
+	background:#FFC37F;
+	border-radius: 100% 0% 20% 0%;
+	margin-top:3px; margin-left:-4px;
+	width:6px; height:6px;
+	transform:rotateZ(45deg);
+}
+
+/*--- wings animation*/
+
+@keyframes alas {
+	50%{
+		transform:rotateX(-1440deg);
+	}
+}
+
+/*--- bird animation*/
+
+@keyframes planeo {
+	40%{
+		transform:rotateZ(2deg) translateX(2px) translateY(10px) translateZ(0);
+		line-height:16px;
+		font-size:0.6em;
+	}
+	80%{
+		transform:rotateZ(-2deg) translateX(5px) translateY(8px) translateZ(0);
+	}
+}
 
 
-/*---------media queries---------*/
-@media only screen and (min-width: 768px) {
-    h1 {
-		color: black;
-		font-size: 100px;
-    }
+/*---------Media Queries---------*/
+@media only screen and (min-width: 992px) {
+	h1 {
+		font-size: 130px;
+	}
+}
+@media only screen and (max-width: 992px) {
+	h1 {
+		font-size: 110px;
+	}
 	.search-term {
 		max-width: 400px;
 	}
 }
 @media only screen and (max-width: 768px) {
 	h1 {
-        font-size: 80px;
-    }
-    .jumbotron {
-		margin: 10px 10px 30px 10px;
-    }
+		font-size: 90px;
+	}
 	#panel-main, form {
 		max-width: 100%; 
 	}
+	.header {
+		margin: 0 15px;
+	}
 }
-@media only screen and (max-width: 450px) {
+@media only screen and (max-width: 500px) {
 	h1 {
-        font-size: 40px;
-    }
+		font-size: 70px;
+	}
+	.header {
+		margin: 0 15px;
+	}
+}
+@media only screen and (max-width: 400px) {
+	h1 {
+		font-size: 62px;
+	}
+	.header {
+		margin: 0 10px;
+	}
+}
+
+
+/*---------Animations---------*/
+
+.animated {
+	animation-duration: 1s;
+	animation-fill-mode: both;
+}
+@keyframes fadeInLeft {
+	from {
+		opacity: 0;
+		transform: translate3d(-100%, 0, 0);
+	}
+
+	to {
+		opacity: 1;
+		transform: none;
+	}
+}
+.fadeInLeft {
+	animation-name: fadeInLeft;
+}
+
+@keyframes fadeInUp {
+	from {
+		opacity: 0;
+		transform: translate3d(0, 100%, 0);
+	}
+
+	to {
+		opacity: 1;
+		transform: none;
+	}
+}
+
+.fadeInUp {
+	animation-name: fadeInUp;
+}
+
+@keyframes float {
+	0% {
+		transform: translatey(0px);
+	}
+	50% {
+		transform: translatey(-20px);
+	}
+	100% {
+		transform: translatey(0px);
+	}
+}
+
+#title{
+	margin-top: 15px;
+	transform: translatey(0px);
+	animation: float 6s ease-in-out infinite;
+}
+
+
+/*---------Fade Sequence---------*/
+#title {
+}
+#subTitle {
+	animation-delay: .4s;
+}
+#fadeUp1 {
+	animation-delay: 1s;
+}
+#autocomplete {
+	animation-delay: 1.2s;
+}
+#fadeUp3 {
+	animation-delay: 1.4s;
+}
+#airportInput {
+	animation-delay: 1.6s;
+}
+#fadeUp4 {
+	animation-delay: 1.8s;
+}
+#run-search {
+	animation-delay: 2.0s;
+}
+#panel-output {
+	animation-delay: 2.5s;
 }
