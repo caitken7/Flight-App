@@ -5,17 +5,20 @@
   <meta charset="UTF-8">
   <!--Bootstrap-->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+  <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
   
-  <!--jQuery----->
+  <!--jQuery-->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   
   <!--Style and Font-->
   <link rel="stylesheet" href="assets/css/style.css">
+
   <link href="https://fonts.googleapis.com/css?family=Roboto|Raleway|Lobster|Germania+One" rel="stylesheet">
   
   <!--For mobile friendly viewing-->
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
 </head>
 
 <body>
@@ -33,7 +36,7 @@
           </form>
           <form>
             <p id="fadeUp3" class="animated fadeInUp">Enter your airport:</p>
-            <input id="airportInput" type="text" class="search-term animated fadeInUp">
+            <input id="autocompleteAirport" type="text" class="search-term animated fadeInUp">
           </form>
           <form id="fadeUp4" class="animated fadeInUp">
             <p>TSA Pre-Check?</p>
@@ -55,12 +58,17 @@
               TSA Wait
             </div>
           </div>
+            <div id="timeResults" class="text-center"></div>
+            <div id="waitTime" class="text-center"></div>
+            <div id="totalTime" class="text-center"></div>
+            <div id="mapResults" class="text-center"></div>
+          </div>
         </div>
       </div>
     </div>
   </div>
   
-  <!------------JavaScript------------>
+  <!--JavaScript-->
   <script type="text/javascript" src="assets/javascript/script.js"></script>
 
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDJ8bLvg2ZxQyBBFZaVSXZV7g5NJ_r3hGE&libraries=places&callback=initAutocomplete"
@@ -68,7 +76,9 @@
   
   <!--Back-Stretch-->
   <script type="text/javascript" src="assets/javascript/javascript.js"></script>
+
   <script type="text/javascript">
+
     $(document).ready(function() {
       $.backstretch('assets/images/plane.8.jpg');
     });
