@@ -1,54 +1,237 @@
- var config = {
-    apiKey: "AIzaSyBdRes2snb0kg27ahUhZSCF6t9Q2Pke_0c",
-    authDomain: "flight-app-a6688.firebaseapp.com",
-    databaseURL: "https://flight-app-a6688.firebaseio.com",
-    projectId: "flight-app-a6688",
-    storageBucket: "",
-    messagingSenderId: "861898449579"
-  };
-  firebase.initializeApp(config);
+// var config = {
+//   apiKey: "AIzaSyBdRes2snb0kg27ahUhZSCF6t9Q2Pke_0c",
+//   authDomain: "flight-app-a6688.firebaseapp.com",
+//   databaseURL: "https://flight-app-a6688.firebaseio.com",
+//   projectId: "flight-app-a6688",
+//   storageBucket: "flight-app-a6688.appspot.com",
+//   messagingSenderId: "861898449579"
+// };
 
- var flightNum = 0;
- var startingAdd = "";
+// firebase.initializeApp(config);
 
- var placeSearch, autocomplete;
-      var componentForm = {
-        street_number: "short_name",
-        route: "long_name",
-        locality: "long_name",
-        administrative_area_level_1: "short_name",
-        country: "long_name",
-        postal_code: "short_name"
-      };
+// var database = firebase.database();
 
-      function initAutocomplete() {
+var driveTime;
+var timeDrive;
+
+
+function initAutocomplete() {
         // Create the autocomplete object, restricting the search to geographical
         // location types.
         autocomplete = new google.maps.places.Autocomplete(
-            /** @type {!HTMLInputElement} */(document.getElementById('autocomplete')),
-            {types: ['geocode']});
+          /** @type {!HTMLInputElement} */(document.getElementById("autocomplete")),
+          {types: ["geocode"]});
 
-        // When the user selects an address from the dropdown, populate the address
-        // fields in the form.
-        autocomplete.addListener('place_changed', fillInAddress);
+        autocompleteAirport = new google.maps.places.Autocomplete((document.getElementById("autocompleteAirport")),{types: ["geocode"]});
+
+        $('form').keypress(function(e) { 
+          return e.keyCode != 13;
+        });
       }
 
-      function fillInAddress() {
-        // Get the place details from the autocomplete object.
-        var place = autocomplete.getPlace();
+      function start() {
 
-        for (var component in componentForm) {
-          document.getElementById(component).value = '';
-          document.getElementById(component).disabled = false;
-        }
+        var tsaPre = $('input[name = tsa]:checked').val();
 
-        // Get each component of the address from the place details
-        // and fill the corresponding field on the form.
-        for (var i = 0; i < place.address_components.length; i++) {
-          var addressType = place.address_components[i].types[0];
-          if (componentForm[addressType]) {
-            var val = place.address_components[i][componentForm[addressType]];
-            document.getElementById(addressType).value = val;
+        var address = $("#autocomplete").val()
+
+        var addressAirport = $("#autocompleteAirport").val()
+
+        console.log(address)
+
+        console.log(addressAirport)
+
+        var originalURL = "https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=" + address + "&destinations=" + addressAirport + "&key=AIzaSyDJ8bLvg2ZxQyBBFZaVSXZV7g5NJ_r3hGE"
+
+        var distanceQueryURL = "https://cors-anywhere.herokuapp.com/" + originalURL
+
+        $.ajax({
+          url: distanceQueryURL,
+          method: "GET",
+          dataType: "json",
+          headers: {
+            "x-requested-with": "xhr"
           }
+        }).done(function(response) {
+
+          timeDrive = (response.rows[0].elements[0].duration.text)
+
+           driveTime = parseInt(timeDrive)
+
+          console.log(driveTime)
+
+          $("#timeResults").text("Drive Time: " + timeDrive)
+
+          if (response.destination_addresses == "O'Hare International Airport (ORD), 10000 W O'Hare Ave, Chicago, IL 60666, USA") {
+            var newAirport = "ORD"
+          }
+
+          if (response.destination_addresses == "Chicago Midway International Airport (MDW), 5700 S Cicero Ave, Chicago, IL 60638, USA") {
+            var newAirport = "MDW"
+          }
+
+          if (newAirport === "ORD" && tsaPre === "No") {
+
+           apLink = "https://apps.tsa.dhs.gov/MyTSAWebService/GetTSOWaitTimes.ashx?ap=ORD&output=json";
+
+           airport();
+         }    
+
+         else if (newAirport === "ORD" && tsaPre ===  "Yes") {
+
+           apLink = "https://apps.tsa.dhs.gov/MyTSAWebService/GetTSOWaitTimes.ashx?ap=ORD&output=json";
+
+           tsaPRE();
+         }
+
+         else if (newAirport === "MDW" && tsaPre === "No") {
+
+          apLink = "https://apps.tsa.dhs.gov/MyTSAWebService/GetTSOWaitTimes.ashx?ap=MDW&output=json";
+
+          airport();
+        }   
+
+
+        else if (newAirport === "MDW" && tsaPre === "Yes") {
+
+          apLink = "https://apps.tsa.dhs.gov/MyTSAWebService/GetTSOWaitTimes.ashx?ap=MDW&output=json";
+
+          tsaPRE();
+
         }
+
+        else {
+
+        };
+      });
+    }
+
+      function airport() {
+
+       var originalURL = apLink;
+       var queryURL = "https://cors-anywhere.herokuapp.com/" + originalURL
+
+       $.ajax({
+        url: queryURL,
+        method: "GET",
+        dataType: "json",
+      // this headers section is necessary for CORS-anywhere
+      headers: {
+        "x-requested-with": "xhr" 
       }
+    }).done(function(response) {
+      console.log('CORS anywhere response', response);
+      var waitTime = response.WaitTimes[0].WaitTime;
+
+
+      var totalTSA;
+
+      if (waitTime == 1) {
+        totalTSA = 0;
+      }
+
+      else if (waitTime == 2) {
+        totalTSA = 10;
+      }
+
+      else if (waitTime == 3) {
+       totalTSA = 20;
+     }
+     else if (waitTime == 4){
+       totalTSA = 30;
+     }
+     else if (waitTime == 5){
+      totalTSA = 45;  
+    }
+    else if (waitTime == 6) {
+      totalTSA = 60;
+    }
+    else if (waitTime == 7) {
+      totalTSA = 90;
+    }
+    else if (waitTime == 8) {
+      totalTSA = 120;
+    }
+
+    var totalTSATime = parseInt(totalTSA)
+
+    var totalCalculatedTime = (totalTSATime + driveTime)
+
+    console.log(totalCalculatedTime)
+
+    console.log(driveTime)
+
+    $("#waitTime").html("Wait Time: " + totalTSA +  " mins");
+    $("#totalTime").html("Total Time: " + totalCalculatedTime +  " mins");
+  }).fail(function(jqXHR, textStatus) { 
+    //console.error(textStatus)
+
+  }); 
+
+};
+
+function tsaPRE() {
+
+ var originalURL = apLink;
+ var queryURL = "https://cors-anywhere.herokuapp.com/" + originalURL
+
+ $.ajax({
+  url: queryURL,
+  method: "GET",
+  dataType: "json",
+      // this headers section is necessary for CORS-anywhere
+      headers: {
+        "x-requested-with": "xhr" 
+      }
+    }).done(function(response) {
+            //console.log('CORS anywhere response for PRE', response);
+            var waitTime = response.WaitTimes[3].WaitTime;
+
+            var totalTSA;
+
+            if (waitTime == 1) {
+              totalTSA = 0;
+            }
+            else if (waitTime == 2) {
+              totalTSA = 10;
+            }
+
+            else if (waitTime == 3) {
+             totalTSA = 20;
+           }
+           else if (waitTime == 4){
+             totalTSA = 30;
+           }
+           else if (waitTime == 5){
+            totalTSA = 45;  
+          }
+          else if (waitTime == 6) {
+            totalTSA = 60;
+          }
+          else if (waitTime == 7) {
+            totalTSA = 90;
+          }
+          else if (waitTime == 8) {
+            totalTSA = 120;
+          }
+
+          var totalTSATime = parseInt(totalTSA)
+
+          var totalCalculatedTime = totalTSA + driveTime
+
+
+          $("#waitTime").html("Wait Time: " + totalTSA +  " mins");
+          $("#totalTime").html("Total Time: " + totalCalculatedTime +  " mins");
+        }).fail(function(jqXHR, textStatus) { 
+            //console.error(textStatus)
+
+          });          
+      };
+
+      $("#run-search").on("click", function(){
+
+        start();
+
+      })
+
+
