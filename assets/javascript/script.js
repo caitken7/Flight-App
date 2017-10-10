@@ -70,6 +70,8 @@ function initAutocomplete() {
             var newAirport = "MDW"
           }
 
+          $("#mapResults").html('<iframe src="https://www.google.com/maps/embed/v1/directions?origin=' + response.origin_addresses + '&destination=' + response.destination_addresses  + '&key=AIzaSyDOvWis17heiQrS87gQ9a6PSGmxCaxun5Q"></iframe>')
+
           if (newAirport === "ORD" && tsaPre === "No") {
 
            apLink = "https://apps.tsa.dhs.gov/MyTSAWebService/GetTSOWaitTimes.ashx?ap=ORD&output=json";
@@ -161,6 +163,11 @@ function initAutocomplete() {
 
     console.log(driveTime)
 
+    var tsaPer = (totalTSATime / totalCalculatedTime) * 100;
+    $("#tsaProgress").css("width", tsaPer +  "%")
+    var drivePer = (driveTime / totalCalculatedTime)  * 100;
+    $("#driveProgress").css("width", drivePer + "%")
+
     $("#waitTime").html("Wait Time: " + totalTSA +  " mins");
     $("#totalTime").html("Total Time: " + totalCalculatedTime +  " mins");
   }).fail(function(jqXHR, textStatus) { 
@@ -219,6 +226,8 @@ function tsaPRE() {
 
           var totalCalculatedTime = totalTSA + driveTime
 
+          var tsaPer = (totalTSATime / totalCalculatedTime) * 100;
+          var drivePer = (driveTime / totalCalculatedTime)  * 100;
 
           $("#waitTime").html("Wait Time: " + totalTSA +  " mins");
           $("#totalTime").html("Total Time: " + totalCalculatedTime +  " mins");
