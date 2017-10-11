@@ -267,6 +267,18 @@ function tsaPRE() {
           });          
       };
 
+      $("#home").on("click", function(){
+        event.preventDefault();
+
+        database.ref().on("value", function(snapshot){
+          console.log(snapshot.val().Home);
+
+          $("#autocomplete").val(snapshot.val().Home);
+
+        });
+
+      });
+
       $("#run-search").on("click", function(){
 		$(".pajaro").show();
         start();
