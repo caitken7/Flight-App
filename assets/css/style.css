@@ -48,7 +48,8 @@ label {
 #home {
 	background-color: black;
 	margin-top: 9px;
-	width: 10%;
+	width: 6%;
+	min-width: 60px;
 }
 
 /*-----------Classes------------*/
@@ -60,7 +61,8 @@ label {
 }
 #autocomplete {
 	margin-left: 20px;
-	min-width: 80%;
+	width: 100%;
+	float: right;
 }
 #autocompleteAirport {
 	min-width: 100%;
