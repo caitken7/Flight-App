@@ -229,8 +229,14 @@ function tsaPRE() {
           var tsaPer = (totalTSATime / totalCalculatedTime) * 100;
           var drivePer = (driveTime / totalCalculatedTime)  * 100;
 
+          var tsaPer = (totalTSATime / totalCalculatedTime) * 100;
+          $("#tsaProgress").css("width", tsaPer +  "%")
+          var drivePer = (driveTime / totalCalculatedTime)  * 100;
+          $("#driveProgress").css("width", drivePer + "%")
+
           $("#waitTime").html("Wait Time: " + totalTSA +  " mins");
           $("#totalTime").html("Total Time: " + totalCalculatedTime +  " mins");
+
         }).fail(function(jqXHR, textStatus) { 
             //console.error(textStatus)
 
