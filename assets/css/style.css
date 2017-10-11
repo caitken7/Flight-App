@@ -45,14 +45,25 @@ label {
 	top: 0; right: 0; left: 0;
 	background-size: cover;
 }
+#home {
+	background-color: black;
+	margin-top: 9px;
+	width: 10%;
+}
 
 /*-----------Classes------------*/
 .search-term {
-	min-width: 100%;
 	border-radius: 10px;
 	margin: 10px auto;
 	padding: 2px 15px;
 	color: dimgrey;
+}
+#autocomplete {
+	margin-left: 20px;
+	min-width: 80%;
+}
+#autocompleteAirport {
+	min-width: 100%;
 }
 
 /*---------Submit Button---------*/
@@ -91,6 +102,42 @@ label {
 	transform: scale(1.1); 
 }
 .btn:active {
+	position:relative;
+	top:1px;
+}
+
+
+/*---------Home Button---------*/
+#home {
+	font-size: 18px;
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#7892c2', endColorstr='#476e9e',GradientType=0);
+	background-color:#D0894B;
+	background: #D0894B;
+	background: -webkit-linear-gradient(to bottom, #f1b870, #D0894B); 
+	background: linear-gradient(to bottom, #f1b870, #D0894B);
+	-moz-border-radius:10px;
+	-webkit-border-radius:10px;
+	border-radius:10px;
+	border:1px solid #4e6096;
+	display:inline-block;
+	cursor:pointer;
+	font-size:20px;
+	text-decoration:none;
+	text-shadow:1px 1px 4px #283966;
+	box-shadow: 1px 1px 4px #283966;
+	padding: 1px 10px;
+}
+#home:hover {
+	background: #D0894B;
+	background: -webkit-linear-gradient(to top, #f1b870, #D0894B);
+	background: linear-gradient(to top, #f1b870, #D0894B);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#476e9e', endColorstr='#7892c2',GradientType=0);
+	background-color:#476e9e;
+	border:1px solid #4e6096;
+	color: white;
+	transform: scale(1.1); 
+}
+#home:active {
 	position:relative;
 	top:1px;
 }
@@ -288,13 +335,13 @@ label {
 #fadeUp1 {
 	animation-delay: 1s;
 }
-#autocomplete {
+#autocomplete, #home {
 	animation-delay: 1.2s;
 }
 #fadeUp3 {
 	animation-delay: 1.4s;
 }
-#airportInput {
+#autocompleteAirport {
 	animation-delay: 1.6s;
 }
 #fadeUp4 {
