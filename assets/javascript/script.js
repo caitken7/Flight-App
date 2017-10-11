@@ -72,6 +72,11 @@ function initAutocomplete() {
             "x-requested-with": "xhr"
           }
         }).done(function(response) {
+			
+		  //show and scroll to output
+		  $("#panel-output").show();
+		  $.scrollTo($('#panel-output'), 1000);
+		  $(".pajaro").hide();
 
           timeDrive = (response.rows[0].elements[0].duration.text)
 
@@ -263,7 +268,7 @@ function tsaPRE() {
       };
 
       $("#run-search").on("click", function(){
-
+		$(".pajaro").show();
         start();
 
       })
