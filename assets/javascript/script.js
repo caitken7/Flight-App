@@ -1,15 +1,15 @@
-// var config = {
-//   apiKey: "AIzaSyBdRes2snb0kg27ahUhZSCF6t9Q2Pke_0c",
-//   authDomain: "flight-app-a6688.firebaseapp.com",
-//   databaseURL: "https://flight-app-a6688.firebaseio.com",
-//   projectId: "flight-app-a6688",
-//   storageBucket: "flight-app-a6688.appspot.com",
-//   messagingSenderId: "861898449579"
-// };
+ var config = {
+   apiKey: "AIzaSyBdRes2snb0kg27ahUhZSCF6t9Q2Pke_0c",
+   authDomain: "flight-app-a6688.firebaseapp.com",
+   databaseURL: "https://flight-app-a6688.firebaseio.com",
+   projectId: "flight-app-a6688",
+   storageBucket: "flight-app-a6688.appspot.com",
+   messagingSenderId: "861898449579"
+ };
 
-// firebase.initializeApp(config);
+ firebase.initializeApp(config);
 
-// var database = firebase.database();
+ var database = firebase.database();
 
 var driveTime;
 var timeDrive;
@@ -30,12 +30,31 @@ function initAutocomplete() {
       }
 
       function start() {
+          
 
         var tsaPre = $('input[name = tsa]:checked').val();
 
         var address = $("#autocomplete").val()
 
         var addressAirport = $("#autocompleteAirport").val()
+
+         if (address === "home") {         
+
+            database.ref().on("child_added", function(childSnapshot, prevChildKey) {
+
+             address = childSnapshot.val().Home;
+
+            $("#fadeUp1").append(address);
+            })
+            };       
+
+
+         database.ref().set({
+          Home: address
+        });
+
+
+
 
         console.log(address)
 
