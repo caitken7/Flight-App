@@ -1,6 +1,7 @@
 
-# Flight App
-# Contributors/Roles
+# Time-To-Fly
+* Calculate your time from home to your airplane seat, using the Google Maps API and the TSA Checkpoint Time API.
+## Contributors/Roles
 * Scrum Master: Ammad Shaikh
 * Git Guardian: Stephanie Stella
 ### Front-end
@@ -10,7 +11,7 @@
 * Max Teibel
 * Stephanie Stella
 ## Summary
-Our project enables users to calculate their time from home to their airplane seats, by usuing the google maps api and a tsa checkpoint time api to calculate their estimated travel time from home to airplane seat.
+
 
 ## Screenshot
 ![Screenshot](assests/images/wireframe.png)
