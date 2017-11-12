@@ -1,9 +1,9 @@
 
-# Time-To-Fly
+# Time-To-Fly App
 * Calculate your time from home to your airplane seat, using the Google Maps API and the TSA Checkpoint Time API.
 
-![Screenshot](assests/images/screenshot1.png)
-![Screenshot](assests/images/screenshot2.png)
+![Alt text](assests/images/screenshot1.png?raw=true "Screen Shot")
+![Alt text](assests/images/screenshot2.png?raw=true "Screen Shot")
 
 ## Contributors/Roles
 * Scrum Master: Ammad Shaikh
