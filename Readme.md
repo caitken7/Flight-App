@@ -8,6 +8,9 @@
 	* Click "Calculate" to view estimated total drive time and TSA wait time!
 	* Note: TSA wait times are crowdsourced.
 
+Demo:
+![Gif](assets/images/timetofly.gif)
+Screenshots:
 ![Screen Shot 1](assets/images/screenshot1.png)
 ![Screen Shot 2](assets/images/screenshot2.png)
 
